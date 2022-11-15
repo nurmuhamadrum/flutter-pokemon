@@ -1,16 +1,49 @@
-# pokemon
+# Flutter Developer Test | Global Urban Esensial
 
-A new Flutter project.
+## Table of Contents
+
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Built With](#built-with)
+- [Author](#author)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Before starting to install the project, there're some things that need to be done first.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Make sure all of these are properly installed in your system.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Application  | Download                                                                            |
+| ------------ | ----------------------------------------------------------------------------------- |
+| Git          | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux) / [MacOS](https://git-scm.com/download/mac) |
+| Flutter | [Link](https://docs.flutter.dev/get-started/install)                |
+
+## Installation
+### How to Installation & Running App Application Localy
+
+First, clone this repository into your system.
+
+```
+git clone https://github.com/nurmuhamadrum/flutter-pokemon.git
+```
+
+## Screenshots
+
+<img src="docs/screenshots/screenshot-1.png" width="50%" />
+<img src="docs/screenshots/screenshot-2.png" width="50%" />
+<img src="docs/screenshots/screenshot-3.png" width="50%" />
+<img src="docs/screenshots/screenshot-4.png" width="50%" />
+<img src="docs/screenshots/screenshot-5.png" width="50%" />
+
+## Built With
+
+- [FLUTTER](https://docs.flutter.dev/) - FLUTTER
+- [API](https://pokeapi.co/) - MOCK API
+
+## Author
+
+**Nur Muhamad Rum** - www.nurmuhamadrum.site
