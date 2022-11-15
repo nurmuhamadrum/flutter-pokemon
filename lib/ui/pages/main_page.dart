@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemon/cubit/page_cubit.dart';
 import 'package:pokemon/ui/pages/home_page.dart';
+import 'package:pokemon/ui/pages/profile_page.dart';
 import 'package:pokemon/ui/widgets/custom_bottom_navigation_item.dart';
 import '../../shared/theme.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
   Widget build(BuildContext context) {
-    Widget buildContent() {
-      return HomePage();
+    Widget buildContent(int currentIndex) {
+      switch (currentIndex) {
+        case 0:
+          return HomePage();
+        case 1:
+          return ProfilePage();
+        default:
+          return HomePage();
+      }
     }
 
     Widget customButtomNavigation() {
@@ -25,14 +40,14 @@ class MainPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(defaultRadius)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+            children: const [
               CustomBottomNavigationItem(
+                index: 0,
                 imageUrl: 'assets/icon_home.png',
-                isSelected: true,
               ),
               CustomBottomNavigationItem(
+                index: 1,
                 imageUrl: 'assets/icon_user.png',
-                isSelected: false,
               )
             ],
           ),
@@ -40,11 +55,15 @@ class MainPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: Stack(
-        children: [buildContent(), customButtomNavigation()],
-      ),
+    return BlocBuilder<PageCubit, int>(
+      builder: (context, currentIndex) {
+        return Scaffold(
+          backgroundColor: kBackgroundColor,
+          body: Stack(
+            children: [buildContent(currentIndex), customButtomNavigation()],
+          ),
+        );
+      },
     );
   }
 }

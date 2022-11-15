@@ -91,7 +91,7 @@ class DetailPage extends StatelessWidget {
                   ),
                   SizedBox(height: 6,),
                   Text(
-                    'About the pokemon',
+                    'Bulbasaur is pokemon water',
                     style: blackTextStyle.copyWith(
                       height: 2
                     ),
@@ -106,7 +106,7 @@ class DetailPage extends StatelessWidget {
                   ),
                   SizedBox(height: 6,),
                   Text(
-                    'Ability the pokemon',
+                    'His strength is that he can spit water',
                     style: blackTextStyle.copyWith(
                       height: 2
                     ),

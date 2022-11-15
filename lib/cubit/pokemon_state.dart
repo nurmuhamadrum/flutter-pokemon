@@ -1,6 +1,6 @@
 part of 'pokemon_cubit.dart';
 
-@immutable
+// @immutable
 abstract class PokemonState {}
 
 class PokemonInitial extends PokemonState {}

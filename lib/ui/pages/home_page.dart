@@ -1,8 +1,12 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon/cubit/pokemon_cubit.dart';
+import 'package:pokemon/models/pokemon_model.dart';
+import 'package:pokemon/services/pokemon_service.dart';
 import 'package:pokemon/ui/widgets/pokemon_tile.dart';
 import '../../shared/theme.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +16,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<PokemonModel> listPokemon = [];
+  PokemonService pokemonService = PokemonService();
+
   @override
   void initState() {
     context.read<PokemonCubit>().fetchPokemon();
@@ -62,12 +69,13 @@ class _HomePageState extends State<HomePage> {
 
     Widget pokemonList() {
       return Container(
-        margin:
-            EdgeInsets.only(top: 30, left: defaultMargin, right: defaultMargin),
+        margin: EdgeInsets.only(
+            top: 30, left: defaultMargin, right: defaultMargin, bottom: 100),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Pokemon List',
+              'Pokemon Hunt',
               style:
                   blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
             ),
@@ -82,7 +90,7 @@ class _HomePageState extends State<HomePage> {
             ),
             PokemonTile(
               name: 'Snorlax',
-            ),
+            )
           ],
         ),
       );
@@ -92,19 +100,24 @@ class _HomePageState extends State<HomePage> {
       listener: (context, state) {
         if (state is PokemonFailed) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.red, content: Text(state.error)));
+            backgroundColor: Colors.red,
+            content: Text(state.error),
+          ));
         }
       },
       builder: (context, state) {
-        if (state is PokemonSuccess) {
+        print('state value : $state');
+        // if (state is PokemonSuccess) {
           return ListView(
             children: [header(), pokemonList()],
           );
-        }
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+        // }
+
+        // return Center(
+        //   child: CircularProgressIndicator(),
+        // );
       },
     );
   }
 }
+

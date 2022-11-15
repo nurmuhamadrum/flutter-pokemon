@@ -1,6 +1,4 @@
-import 'dart:html';
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:pokemon/models/pokemon_model.dart';
 import 'package:pokemon/services/pokemon_service.dart';
 
@@ -14,7 +12,7 @@ class PokemonCubit extends Cubit<PokemonState> {
       emit(PokemonLoading());
 
       List<PokemonModel> pokemons = await PokemonService().fetchPokemon();
-
+      
       emit(PokemonSuccess(pokemons));
     } catch (e) {
       emit(PokemonFailed(e.toString()));
