@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon/ui/pages/home_page.dart';
+import 'package:pokemon/ui/widgets/custom_bottom_navigation_item.dart';
 import '../../shared/theme.dart';
 
 class MainPage extends StatelessWidget {
@@ -6,6 +8,10 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildContent() {
+      return HomePage();
+    }
+
     Widget customButtomNavigation() {
       return Align(
         alignment: Alignment.bottomCenter,
@@ -20,45 +26,13 @@ class MainPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/icon_home.png'))),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 4,
-                    decoration: BoxDecoration(
-                        color: kBlackColor,
-                        borderRadius: BorderRadius.circular(18)),
-                  )
-                ],
+              CustomBottomNavigationItem(
+                imageUrl: 'assets/icon_home.png',
+                isSelected: true,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/icon_user.png'))),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 4,
-                    decoration: BoxDecoration(
-                        color: kTransparentColor,
-                        borderRadius: BorderRadius.circular(18)),
-                  )
-                ],
+              CustomBottomNavigationItem(
+                imageUrl: 'assets/icon_user.png',
+                isSelected: false,
               )
             ],
           ),
@@ -69,7 +43,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Stack(
-        children: [customButtomNavigation()],
+        children: [buildContent(), customButtomNavigation()],
       ),
     );
   }

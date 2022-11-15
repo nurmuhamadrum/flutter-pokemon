@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon/ui/widgets/custom_button.dart';
 import '../../shared/theme.dart';
 
 class GetStartedPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class GetStartedPage extends StatelessWidget {
             Text(
               'Who\'s that Pokemon!',
               style:
-                  whiteTextStyle.copyWith(fontSize: 32, fontWeight: semiBold),
+                  whiteTextStyle.copyWith(fontSize: 28, fontWeight: semiBold),
             ),
             SizedBox(height: 10),
             Text(
@@ -31,24 +32,16 @@ class GetStartedPage extends StatelessWidget {
               style: whiteTextStyle.copyWith(fontSize: 16, fontWeight: light),
               textAlign: TextAlign.center,
             ),
-            Container(
-              margin: EdgeInsets.only(top: 50, bottom: 80),
+            CustomButton(
+              title: 'Get Started', 
               width: 220,
-              height: 55,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/main');
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: kWhiteColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(defaultRadius))),
-                child: Text(
-                  'Get Started',
-                  style: purpleTextStyle.copyWith(
-                      fontSize: 18, fontWeight: medium),
-                ),
+              margin: EdgeInsets.only(
+                top: 50,
+                bottom: 80
               ),
+              onPressed: (){
+                Navigator.pushNamed(context, '/main');
+              }
             )
           ],
         ),
