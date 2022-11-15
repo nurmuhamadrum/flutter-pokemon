@@ -33,11 +33,11 @@ git clone https://github.com/nurmuhamadrum/flutter-pokemon.git
 
 ## Screenshots
 
-<img src="docs/screenshots/screenshot-1.png" width="50%" />
-<img src="docs/screenshots/screenshot-2.png" width="50%" />
-<img src="docs/screenshots/screenshot-3.png" width="50%" />
-<img src="docs/screenshots/screenshot-4.png" width="50%" />
-<img src="docs/screenshots/screenshot-5.png" width="50%" />
+<img src="docs/screenshots/screenshot-1.png" width="20%" />
+<img src="docs/screenshots/screenshot-2.png" width="20%" />
+<img src="docs/screenshots/screenshot-3.png" width="20%" />
+<img src="docs/screenshots/screenshot-4.png" width="20%" />
+<img src="docs/screenshots/screenshot-5.png" width="20%" />
 
 ## Built With
 
