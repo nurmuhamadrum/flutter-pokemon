@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon/ui/widgets/custom_bottom_navigation_item.dart';
+import 'package:pokemon/cubit/pokemon_cubit.dart';
 import 'package:pokemon/ui/widgets/pokemon_tile.dart';
 import '../../shared/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<PokemonCubit>().fetchPokemon();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,27 +62,49 @@ class HomePage extends StatelessWidget {
 
     Widget pokemonList() {
       return Container(
-        margin: EdgeInsets.only(top: 30, left: defaultMargin, right: defaultMargin),
+        margin:
+            EdgeInsets.only(top: 30, left: defaultMargin, right: defaultMargin),
         child: Column(
           children: [
             Text(
               'Pokemon List',
-              style: blackTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: semiBold
-              ),
+              style:
+                  blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
             ),
-            PokemonTile(name: 'Bulbasaur',),
-            PokemonTile(name: 'Venusaur',),
-            PokemonTile(name: 'Charmander',),
-            PokemonTile(name: 'Snorlax',),
+            PokemonTile(
+              name: 'Bulbasaur',
+            ),
+            PokemonTile(
+              name: 'Venusaur',
+            ),
+            PokemonTile(
+              name: 'Charmander',
+            ),
+            PokemonTile(
+              name: 'Snorlax',
+            ),
           ],
         ),
       );
     }
 
-    return ListView(
-      children: [header(), pokemonList()],
+    return BlocConsumer<PokemonCubit, PokemonState>(
+      listener: (context, state) {
+        if (state is PokemonFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: Colors.red, content: Text(state.error)));
+        }
+      },
+      builder: (context, state) {
+        if (state is PokemonSuccess) {
+          return ListView(
+            children: [header(), pokemonList()],
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }
