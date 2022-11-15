@@ -44,7 +44,7 @@ git clone https://github.com/nurmuhamadrum/flutter-pokemon.git
 ## Built With
 
 - [FLUTTER](https://docs.flutter.dev/) - FLUTTER
-- [API](https://pokeapi.co/) - MOCK API
+- [API](https://pokeapi.co/) - POKEMON API
 
 ## Author
 
