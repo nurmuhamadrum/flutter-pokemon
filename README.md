@@ -31,6 +31,13 @@ First, clone this repository into your system.
 git clone https://github.com/nurmuhamadrum/flutter-pokemon.git
 ```
 
+Then, install all the packages that described in `pubspec.yaml`.
+
+```
+flutter pub get
+```
+
+After flutter pub get proccess is done then run your Emulator and Start Debugging. Wait till the App application is running. Now, you can explore the App Application and its features. Enjoy!
 ## Screenshots
 
 <div style={{ display: 'flex' }}>
