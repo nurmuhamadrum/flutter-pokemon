@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 class PokemonModel extends Equatable{
-  final String id;
-  final String name;
+  final String? name;
+  final String? url;
 
   PokemonModel({
-    this.id = '',
-    this.name = '',
+    this.name,
+    this.url, 
   });
 
-  factory PokemonModel.fromJson(String id, Map<String, dynamic> json) => 
+  factory PokemonModel.fromJson(Map<String, dynamic> json) => 
     PokemonModel(
-      id: id,
       name: json['name'],
+      url: json['url'],
     );
 
   @override
-  List<Object?> get props => [id, name];
+  List<Object?> get props => [name, url];
 }

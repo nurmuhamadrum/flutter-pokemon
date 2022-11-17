@@ -16,11 +16,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<PokemonModel> listPokemon = [];
-  PokemonService pokemonService = PokemonService();
+  // List<PokemonModel> listPokemon = [];
+  // PokemonService pokemonService = PokemonService();
+
+  late Future<PokemonModel> futurePokemon;
 
   @override
   void initState() {
+    // futurePokemon = fetchPokemon();
     context.read<PokemonCubit>().fetchPokemon();
     super.initState();
   }
@@ -67,32 +70,24 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget pokemonList() {
+    Widget title() {
       return Container(
-        margin: EdgeInsets.only(
-            top: 30, left: defaultMargin, right: defaultMargin, bottom: 100),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pokemon Hunt',
-              style:
-                  blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
-            ),
-            PokemonTile(
-              name: 'Bulbasaur',
-            ),
-            PokemonTile(
-              name: 'Venusaur',
-            ),
-            PokemonTile(
-              name: 'Charmander',
-            ),
-            PokemonTile(
-              name: 'Snorlax',
-            )
-          ],
+        margin: EdgeInsets.only(top: 30, left: defaultMargin, right: defaultMargin),
+        child: Text(
+          'Pokemon Hunt',
+          style: blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
         ),
+      );
+    }
+
+    Widget pokemonList(List<PokemonModel> pokemons) {
+      return Container(
+        margin: EdgeInsets.only(left: defaultMargin, right: defaultMargin, bottom: 100),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: pokemons.map((PokemonModel pokemon) {
+              return PokemonTile(pokemon);
+            }).toList()),
       );
     }
 
@@ -107,17 +102,16 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         print('state value : $state');
-        // if (state is PokemonSuccess) {
+        if (state is PokemonSuccess) {
           return ListView(
-            children: [header(), pokemonList()],
+            children: [header(), title(), pokemonList(state.pokemons)],
           );
-        // }
+        }
 
-        // return Center(
-        //   child: CircularProgressIndicator(),
-        // );
+        return Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }
 }
-

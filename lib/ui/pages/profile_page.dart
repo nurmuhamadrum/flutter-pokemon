@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon/ui/widgets/custom_bottom_navigation_item.dart';
-import 'package:pokemon/ui/widgets/pokemon_tile.dart';
+// import 'package:pokemon/ui/widgets/pokemon_tile.dart';
 import '../../shared/theme.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -17,9 +17,9 @@ class ProfilePage extends StatelessWidget {
             'Your Pokemon',
             style: blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
           ),
-          PokemonTile(
-            name: 'Bulbasaur',
-          )
+          // PokemonTile(
+          //   name: 'Bulbasaur',
+          // )
         ],
       ),
     );
