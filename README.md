@@ -1,4 +1,4 @@
-# Flutter Developer Test | Global Urban Esensial
+# Flutter Developer Assigment
 
 ## Table of Contents
 
